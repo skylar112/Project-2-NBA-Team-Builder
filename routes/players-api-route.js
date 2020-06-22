@@ -2,40 +2,40 @@ const db = require("../models");
 
 
 module.exports = function(app) {
-    // Find all Authors and return them to the user with res.json
-    app.get("/api/authors", async function(req, res) {
-      const dbAuthor = await db.Author.findAll({
-        include: [db.Post]
+    // Find all players and return them to the user with res.json
+    app.get("/api/players", async function(req, res) {
+      const dbPlayer= await db.Player.findAll({
+        include: [db.Teams]
       })
-      res.json(dbAuthor);
+      res.json(dbPlayer);
     });
   
-    app.get("/api/authors/:id", async function(req, res) {
-      // Find one Author with the id in req.params.id and return them to the user with res.json
-      const dbAuthor = await db.Author.findOne({
+    app.get("/api/players/:id", async function(req, res) {
+      // Find one  players with the id in req.params.id and return them to the user with res.json
+      const dbPlayer = await db.Player.findOne({
         where: {
           id: req.params.id
         },
-        include: [db.Post]
+        include: [db.Temas]
       })
-      res.json(dbAuthor);
+      res.json(dbPlayer);
     });
   
-    app.post("/api/authors", async function(req, res) {
-      // Create an Author with the data available to us in req.body
+    app.post("/api/players", async function(req, res) {
+      // Create an players with the data available to us in req.body
       console.log(req.body);
-      const dbAuthor = await db.Author.create(req.body)
-      res.json(dbAuthor);
+      const dbPlayer = await db.Player.create(req.body)
+      res.json(dbPlayer);
     });
   
-    app.delete("/api/authors/:id", async function(req, res) {
-      // Delete the Author with the id available to us in req.params.id
-      const dbAuthor = await db.Author.destroy({
+    app.delete("/api/palyers/:id", async function(req, res) {
+      // Delete the  players with the id available to us in req.params.id
+      const dbPlayer = await db.Player.destroy({
         where: {
           id: req.params.id
         }
       })
-      res.json(dbAuthor);
+      res.json(dbPlayer);
     });
   
   };
