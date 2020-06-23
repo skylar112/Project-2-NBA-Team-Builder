@@ -1,11 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
-  const Player = sequelize.define("Player_team_table", {
+  const Player = sequelize.define("player", {
     // Giving the Author model a name of type STRING
     team_name: DataTypes.STRING,
     name_id: DataTypes.INTEGER,
 
     playersArray: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       get() {
           return this.getDataValue('playersArray').split(';')

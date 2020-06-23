@@ -28,7 +28,7 @@ module.exports = function(app) {
       res.json(dbPlayer);
     });
   
-    app.delete("/api/palyers/:id", async function(req, res) {
+    app.delete("/api/players/:id", async function(req, res) {
       // Delete the  players with the id available to us in req.params.id
       const dbPlayer = await db.Player.destroy({
         where: {
@@ -38,5 +38,14 @@ module.exports = function(app) {
       res.json(dbPlayer);
     });
   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   };
   

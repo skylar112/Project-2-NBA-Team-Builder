@@ -1,12 +1,14 @@
 body {
   background-color: #FBFCFC;
- color:white ;
+ color:black ;
 }
 nav{
   background-color: #12356E;
   border-bottom: 2px solid #C9082A;
   overflow: hidden;
 }
+
+
 
 #navbar a {
   float: left;

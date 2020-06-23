@@ -26,6 +26,7 @@ app.use(express.static("public"));
 require("./routes/players-api-route")(app);
 require("./routes/html-routes.js")(app);
 require("./routes/teams-routes.js")(app);
+require("./routes/user-routes.js")(app);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({ force: true }).then(function () {
