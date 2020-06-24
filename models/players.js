@@ -1,19 +1,14 @@
 module.exports = function (sequelize, DataTypes) {
   const Player = sequelize.define("player", {
+    
+   
     // Giving the Author model a name of type STRING
     team_name: DataTypes.STRING,
     name_id: DataTypes.INTEGER,
 
     playersArray: {
       type: DataTypes.STRING,
-      allowNull: false,
-      get() {
-          return this.getDataValue('playersArray').split(';')
-      },
-      set(val) {
-         this.setDataValue('playersArray',val.join(';'));
-      },
-  }
+    },
   });
 
   // Player.associate = function(models) {
@@ -25,4 +20,15 @@ module.exports = function (sequelize, DataTypes) {
   // };
 
   return Player;
+
+
+
+
+
+
+
+
+
+
+
 };
