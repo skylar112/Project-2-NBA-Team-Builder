@@ -5,7 +5,6 @@
 // *** Dependencies
 // =============================================================
 const express = require("express");
-const nba = require('nba-api-client');
 
 // Sets up the Express App
 // =============================================================
@@ -35,4 +34,3 @@ db.sequelize.sync({ force: true }).then(function () {
     console.log("http://localhost:" + PORT);
   });
 });
-module.exports = nba;
