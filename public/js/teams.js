@@ -1,9 +1,10 @@
 $(document).ready(function () {
   // Getting references to the name input and author container, as well as the table body
+
   var playerInput = $("#player-name").val();
   var playerList = $("tbody");
   var playerContainer = $(".player-container");
-  var playersArray2 = [];
+  var player2 = [];
 
   // Adding event listeners to the form to create a new object, and the button to delete
   // an Author
@@ -25,28 +26,28 @@ $(document).ready(function () {
     }
     // Calling the upsertAuthor function and passing in the value of the name input
     upsertPlayer({
-      playersArray: playerInput,
+      player_name: playerInput,
     });
   }
 
   // A function for creating an author. Calls getPlayue upon completion
   function upsertPlayer(playerData) {
     playerInput = $("#player-name").val();
-    playersArray2.length = Math.min(playersArray2.length, 4);
+    player2.length = Math.min(player2.length, 4);
 
     //playersArray2 = [];
-    playersArray2.push(playerInput),
-      console.log("position1" + playersArray2[0]);
-    console.log(playersArray2);
+    player2.push(playerInput),
+      console.log("position1" + player2[0]);
+    console.log(player2);
     $.post("/api/players", playerData).then(getPlayers);
   }
 
   // Function for creating a new list row for authors
   function createPlayerRow(playerData) {
-    console.log(playerData.playersArray);
+    console.log(playerData.player_name);
     var newTr = $("<tr>");
     newTr.data("player", playerData);
-    newTr.append("<td>" + playerData.playersArray + "</td>");
+    newTr.append("<td>" + playerData.player_name + "</td>");
     newTr.append("<td></td>");
     newTr.append(
       "<td><a href='/results?player_id=" +
@@ -61,8 +62,13 @@ $(document).ready(function () {
     newTr.append(
       "<td><a style='cursor:pointer;color:red' class='delete-player'>Delete Player</a></td>"
     );
-    return newTr;
+   console.log(playerData.id);
+      console.log(newTr);
+ return newTr;
+ 
+ 
   }
+
 
   // Function for retrieving authors and getting them ready to be rendered to the page
   function getPlayers() {
@@ -98,6 +104,7 @@ $(document).ready(function () {
 
   // Function for handling what happens when the delete button is pressed
   function handleDeleteButtonPress() {
+    
     var listItemData = $(this).parent("td").parent("tr").data("player");
     var id = listItemData.id;
     $.ajax({
@@ -105,7 +112,30 @@ $(document).ready(function () {
       url: "/api/players/" + id,
     }).then(getPlayers);
   }
+ 
+
+
+
+
+  
+  // function handleGetId(playerData) {
+    
+    
+  //   var id = playerData.id;
+  //   $.ajax({
+  //     method: "GET",
+  //     url: "/api/players/" + id,
+  //   }).then( handleGetId());
+  // }
+ 
+
+  // handleGetId()
+
+
+
 });
+
+
 
 //   /* global moment */
 

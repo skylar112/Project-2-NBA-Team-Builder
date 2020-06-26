@@ -1,34 +1,17 @@
 module.exports = function (sequelize, DataTypes) {
-  const Player = sequelize.define("player", {
-    
-   
+  const player = sequelize.define("player", {
     // Giving the Author model a name of type STRING
-    team_name: DataTypes.STRING,
-    name_id: DataTypes.INTEGER,
-
-    playersArray: {
-      type: DataTypes.STRING,
-    },
+    player_name: DataTypes.STRING,
   });
 
-  // Player.associate = function(models) {
-  //   // Associating Author with Posts
-  //   // When an Author is deleted, also delete any associated Posts
-  //   Player.hasMany(models.Post, {
-  //     onDelete: "cascade"
-  //   });
-  // };
-
-  return Player;
-
-
-
-
-
-
-
-
-
-
-
+  player.associate = function(models) {
+    // We're saying that a Post should belong to an Author
+    // A Post can't be created without an Author due to the foreign key constraint
+    player.belongsTo(models.Team, {
+      foreignKey: {
+        allowNull:true
+      }
+    });
+};
+  return player;
 };
