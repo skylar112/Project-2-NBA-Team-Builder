@@ -1,7 +1,7 @@
-const nba = require("nba-api-client");
+// const nba = require("nba-api-client");
 
-var options = { formatted: false };
+// var options = { formatted: false };
 
-nba.teamDetails({ TeamID: 1610612752 }, options).then(function (res) {
-  console.log(res);
-});
+// nba.teamDetails({ TeamID: 1610612752 }, options).then(function (res) {
+//   console.log(res);
+// });
