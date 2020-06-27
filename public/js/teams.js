@@ -10,14 +10,14 @@ $(document).ready(function () {
   // an Author
   $(document).on("submit", "#player-form", handlePlayerFormSubmit);
   $(document).on("click", ".delete-player", handleDeleteButtonPress);
-
+  $("#stats-dis").empty();
   // Getting the initial list of Authors
   getPlayers();
 
   // A function to handle what happens when the form is submitted to create a new Author
   function handlePlayerFormSubmit(event) {
     event.preventDefault();
-    console.log("hello");
+
     var playerInput = $("#player-name").val();
     console.log(playerInput);
     // Don't do anything if the name fields hasn't been filled out
@@ -28,6 +28,36 @@ $(document).ready(function () {
     upsertPlayer({
       player_name: playerInput,
     });
+
+    console.log("new p-input" + playerInput);
+
+    $.ajax({
+      url: `https://www.balldontlie.io/api/v1/players/?search=${playerInput}`,
+      method: "GET",
+    }).then(function (response) {
+      console.log(response.data[0].id);
+
+      var playerStats = response.data[0].id;
+
+      $.ajax({
+        url: `https://www.balldontlie.io/api/v1/players/${playerStats}`,
+        method: "GET",
+      }).then(function (response) {
+        console.log(response.id);
+        var playerStats2 = response.id;
+
+        $.ajax({
+          url: `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerStats2}`,
+          method: "GET",
+        }).then(function (response) {
+          console.log(response);
+
+          $("#stats-dis").append(
+            "<td>" + "Games Played: " + response.data[0].games_played + "<td>"
+          );
+        });
+      });
+    });
   }
 
   // A function for creating an author. Calls getPlayue upon completion
@@ -36,8 +66,7 @@ $(document).ready(function () {
     player2.length = Math.min(player2.length, 4);
 
     //playersArray2 = [];
-    player2.push(playerInput),
-      console.log("position1" + player2[0]);
+    player2.push(playerInput), console.log("position1" + player2[0]);
     console.log(player2);
     $.post("/api/players", playerData).then(getPlayers);
   }
@@ -48,7 +77,7 @@ $(document).ready(function () {
     var newTr = $("<tr>");
     newTr.data("player", playerData);
     newTr.append("<td>" + playerData.player_name + "</td>");
-    newTr.append("<td></td>");
+    newTr.append(`<td></td>`);
     newTr.append(
       "<td><a href='/results?player_id=" +
         playerData.id +
@@ -62,13 +91,10 @@ $(document).ready(function () {
     newTr.append(
       "<td><a style='cursor:pointer;color:red' class='delete-player'>Delete Player</a></td>"
     );
-   console.log(playerData.id);
-      console.log(newTr);
- return newTr;
- 
- 
+    console.log(playerData.id);
+    console.log(newTr);
+    return newTr;
   }
-
 
   // Function for retrieving authors and getting them ready to be rendered to the page
   function getPlayers() {
@@ -78,6 +104,8 @@ $(document).ready(function () {
         rowsToAdd.push(createPlayerRow(data[i]));
       }
       renderPlayerList(rowsToAdd);
+      console.log("player2= " + player2);
+
       //playerInput;
     });
   }
@@ -104,38 +132,26 @@ $(document).ready(function () {
 
   // Function for handling what happens when the delete button is pressed
   function handleDeleteButtonPress() {
-    
     var listItemData = $(this).parent("td").parent("tr").data("player");
     var id = listItemData.id;
     $.ajax({
       method: "DELETE",
       url: "/api/players/" + id,
     }).then(getPlayers);
+    $("#stats-dis").empty();
   }
- 
 
-
-
-
-  
   // function handleGetId(playerData) {
-    
-    
+
   //   var id = playerData.id;
   //   $.ajax({
   //     method: "GET",
   //     url: "/api/players/" + id,
   //   }).then( handleGetId());
   // }
- 
 
   // handleGetId()
-
-
-
 });
-
-
 
 //   /* global moment */
 
