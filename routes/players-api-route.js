@@ -3,18 +3,23 @@ const db = require("../models");
 const nba = require("nba-api-client");
 
 var options = {formatted: true, parameters: true}
-nba.teamDetails({ TeamID: 1610612752 }, options).then(function (res) {
-  console.log(res);
-});
+// nba.teamDetails({ TeamID: 1610612752 }, options).then(function (res) {
+//   console.log(res);
+// });
 
-console.table(nba.getPlayerID("James Harden"));
-console.table(nba.getTeamID("New York Knicks"));
+nba.teamPlayerStats({TeamID: 1610612745, MeasureType: 'Advanced', Season: '2017-18', SeasonType: 'Playoffs'}).then(function(data){
+  console.table(data);
+})
+
+// console.table(nba.getPlayerID("James Harden"));
+
+// console.table(nba.getTeamID("New York Knicks"));
 
 module.exports = function (app) {
   // Find all players and return them to the user with res.json
   app.get("/api/players", async function (req, res) {
     const dbPlayer = await db.player.findAll({
-      // include: [db.User]
+       include: [db.team]
     });
     res.json(dbPlayer);
   });
@@ -26,13 +31,15 @@ module.exports = function (app) {
     res.json(dbPlayer);
   });
 
+console.log(db.player);
+
   app.get("/api/players/:id", async function (req, res) {
     // Find one  players with the id in req.params.id and return them to the user with res.json
     const dbPlayer = await db.player.findOne({
       where: {
         id: req.params.id,
       },
-      // include: [db.User]
+      include: [db.team]
     });
     console.log("hello");
     res.json(dbPlayer);
