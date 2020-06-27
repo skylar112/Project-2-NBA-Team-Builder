@@ -1,25 +1,11 @@
 const db = require("../models");
 
-const nba = require("nba-api-client");
-
-var options = {formatted: true, parameters: true}
-// nba.teamDetails({ TeamID: 1610612752 }, options).then(function (res) {
-//   console.log(res);
-// });
-
-nba.teamPlayerStats({TeamID: 1610612745, MeasureType: 'Advanced', Season: '2017-18', SeasonType: 'Playoffs'}).then(function(data){
-  console.table(data);
-})
-
-// console.table(nba.getPlayerID("James Harden"));
-
-// console.table(nba.getTeamID("New York Knicks"));
 
 module.exports = function (app) {
   // Find all players and return them to the user with res.json
   app.get("/api/players", async function (req, res) {
     const dbPlayer = await db.player.findAll({
-       include: [db.team]
+       include: [db.Team]
     });
     res.json(dbPlayer);
   });
@@ -39,7 +25,7 @@ console.log(db.player);
       where: {
         id: req.params.id,
       },
-      include: [db.team]
+      include: [db.Team]
     });
     console.log("hello");
     res.json(dbPlayer);
