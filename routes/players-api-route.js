@@ -19,7 +19,7 @@ module.exports = function (app) {
   // Find all players and return them to the user with res.json
   app.get("/api/players", async function (req, res) {
     const dbPlayer = await db.player.findAll({
-       include: [db.team]
+       include: [db.Team]
     });
     res.json(dbPlayer);
   });
@@ -39,7 +39,7 @@ console.log(db.player);
       where: {
         id: req.params.id,
       },
-      include: [db.team]
+      include: [db.Team]
     });
     console.log("hello");
     res.json(dbPlayer);
