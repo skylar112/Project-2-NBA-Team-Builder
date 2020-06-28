@@ -8,7 +8,7 @@
 8.home page allows you to add users then create a team based on the user we clicked.
 9. when clicking view team in homepage shows the team of the user selected.
 10. Array must be fully replaced when new team is made.
-11. LEARD THE NPM!!
-12.get player name from table use it to search for the player id and then use the player id to search for his stats.
+
+
 
 
