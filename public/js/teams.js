@@ -10,10 +10,56 @@ $(document).ready(function () {
   // an Author
   $(document).on("submit", "#player-form", handlePlayerFormSubmit);
   $(document).on("click", ".delete-player", handleDeleteButtonPress);
+  $(document).on("click", ".show-stats-modal", handleStatsModalPress);
   $("#stats-dis").empty();
   // Getting the initial list of Authors
   getPlayers();
 
+  function handleStatsModalPress (event){
+        playerInput = $(this).siblings(".playerName").text()
+        console.log("player input",playerInput)
+    $.ajax({
+      url: `https://www.balldontlie.io/api/v1/players/?search=${playerInput}`,
+      method: "GET",
+    }).then(function (response) {
+      console.log("player id", response.data[0].id);
+
+      var playerStats = response.data[0].id;
+
+      $.ajax({
+        url: `https://www.balldontlie.io/api/v1/players/${playerStats}`,
+        method: "GET",
+      }).then(function (response) {
+        console.log("stats id",response.id);
+        var playerStats2 = response.id;
+
+        $.ajax({
+          url: `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerStats2}`,
+          method: "GET",
+        }).then(function (response) {
+          console.log("average",response);
+          $(".modal-body").empty();
+
+          $(".modal-body").append(
+            "<p>" + "Games Played: " + response.data[0].games_played + "<p>" +
+            "<p>" + "Points Per Game: " + response.data[0].pts + "<p>" +
+            "<p>" + "Rebounds Per Game: " + response.data[0].reb + "<p>" +
+            "<p>" + "Assist Per Game: " + response.data[0].ast + "<p>" +
+            "<p>" + "Turnovers Per Game: " + response.data[0].turnover + "<p>" +
+            "<p>" + "Steals Per Game: " + response.data[0].stl + "<p>" +
+            "<p>" + "Mins Per Game: " + response.data[0].min + "<p>" +
+            "<p>" + "Block Per Game: " + response.data[0].blk + "<p>" +
+            "<p>" + "Block Per Game: " + response.data[0].reb + "<p>" 
+           
+          ); 
+          
+          $("#exampleModal").modal("show");
+        });
+      });
+    });
+
+    
+  }
   // A function to handle what happens when the form is submitted to create a new Author
   function handlePlayerFormSubmit(event) {
     event.preventDefault();
@@ -30,34 +76,34 @@ $(document).ready(function () {
     });
 
     console.log("new p-input" + playerInput);
+            
+    // $.ajax({
+    //   url: `https://www.balldontlie.io/api/v1/players/?search=${playerInput}`,
+    //   method: "GET",
+    // }).then(function (response) {
+    //   console.log("player id", response.data[0].id);
 
-    $.ajax({
-      url: `https://www.balldontlie.io/api/v1/players/?search=${playerInput}`,
-      method: "GET",
-    }).then(function (response) {
-      console.log(response.data[0].id);
+    //   var playerStats = response.data[0].id;
 
-      var playerStats = response.data[0].id;
+    //   $.ajax({
+    //     url: `https://www.balldontlie.io/api/v1/players/${playerStats}`,
+    //     method: "GET",
+    //   }).then(function (response) {
+    //     console.log("stats id",response.id);
+    //     var playerStats2 = response.id;
 
-      $.ajax({
-        url: `https://www.balldontlie.io/api/v1/players/${playerStats}`,
-        method: "GET",
-      }).then(function (response) {
-        console.log(response.id);
-        var playerStats2 = response.id;
+    //     $.ajax({
+    //       url: `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerStats2}`,
+    //       method: "GET",
+    //     }).then(function (response) {
+    //       console.log("average",response);
 
-        $.ajax({
-          url: `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerStats2}`,
-          method: "GET",
-        }).then(function (response) {
-          console.log(response);
-
-          $("#stats-dis").append(
-            "<td>" + "Games Played: " + response.data[0].games_played + "<td>"
-          );
-        });
-      });
-    });
+    //       $("#stats-dis").append(
+    //         "<td>" + "Games Played: " + response.data[0].games_played + "<td>"
+    //       );
+    //     });
+    //   });
+    // });
   }
 
   // A function for creating an author. Calls getPlayue upon completion
@@ -76,8 +122,8 @@ $(document).ready(function () {
     console.log(playerData.player_name);
     var newTr = $("<tr>");
     newTr.data("player", playerData);
-    newTr.append("<td>" + playerData.player_name + "</td>");
-    newTr.append(`<td></td>`);
+    newTr.append("<td class='playerName'>" + playerData.player_name + "</td>");
+    newTr.append(`<td class="show-stats-modal"> <a href="#">Show Stats</a> </td>`);
     newTr.append(
       "<td><a href='/results?player_id=" +
         playerData.id +
