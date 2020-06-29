@@ -108,6 +108,10 @@ $(document).ready(function () {
 
   // A function for creating an author. Calls getPlayue upon completion
   function upsertPlayer(playerData) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('user_id');
+
+    playerData.user_id = userId;
     playerInput = $("#player-name").val();
     player2.length = Math.min(player2.length, 4);
 
@@ -142,9 +146,13 @@ $(document).ready(function () {
     return newTr;
   }
 
+
   // Function for retrieving authors and getting them ready to be rendered to the page
   function getPlayers() {
-    $.get("/api/players", function (data) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('user_id');
+
+    $.get("/api/players/" + userId, function (data) {
       var rowsToAdd = [];
       for (var i = 0; i < data.length; i++) {
         rowsToAdd.push(createPlayerRow(data[i]));
@@ -186,6 +194,7 @@ $(document).ready(function () {
     }).then(getPlayers);
     $("#stats-dis").empty();
   }
+
 
   // function handleGetId(playerData) {
 

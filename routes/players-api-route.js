@@ -10,6 +10,18 @@ module.exports = function (app) {
     res.json(dbPlayer);
   });
 
+  app.get('/api/players/:userId', async function(req, res) {
+    const userId = req.params.userId;
+    // find all players based on the userId
+    const getPlayers = await db.player.findAll({
+      where: {
+        user_id: userId,
+      }
+    });
+
+    res.json(getPlayers);
+  });
+
   app.post("/api/players", async function (req, res) {
     // Create an players with the data available to us in req.body
     console.log(req.body);
