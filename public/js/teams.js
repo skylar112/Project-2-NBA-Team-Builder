@@ -160,7 +160,7 @@ $(document).ready(function () {
       renderPlayerList(rowsToAdd);
       console.log("player2= " + player2);
 
-      //playerInput;
+     //playerInput;
     });
   }
 
