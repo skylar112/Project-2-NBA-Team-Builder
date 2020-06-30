@@ -15,6 +15,10 @@ $(document).ready(function () {
   // Getting the initial list of Authors
   getPlayers();
 
+  function verifyPlayer() {
+   
+  }
+
   function handleStatsModalPress (event){
         playerInput = $(this).siblings(".playerName").text()
         console.log("player input",playerInput)
@@ -32,13 +36,19 @@ $(document).ready(function () {
       }).then(function (response) {
         console.log("stats id",response.id);
         var playerStats2 = response.id;
-
+//creat h3 to call in player name into modal
         $.ajax({
           url: `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerStats2}`,
           method: "GET",
         }).then(function (response) {
           console.log("average",response);
+          if(!response.data) {
+            alert("choose new player");
+            return;
+          }
           $(".modal-body").empty();
+          $("#exampleModalLabel").text(playerInput + " Stats");
+
 
           $(".modal-body").append(
             "<p>" + "Games Played: " + response.data[0].games_played + "<p>" +
