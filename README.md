@@ -4,8 +4,8 @@
 
 NBA Team Builder is an application that allows you to create and update your fantasy team, as well as show and compare statistics between you friends. 
 
-<img src="/Project-2-NBA-Team-Builder/public/img/55583.jpg"
-     alt="nba logo">
+![Logo](/public/img/international-players-graphic.jpeg)
+
 ## Installation
 
 Install sequelize
