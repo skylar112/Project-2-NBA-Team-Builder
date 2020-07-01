@@ -45,12 +45,7 @@ $(document).ready(function () {
     newTr.append("<td>" + userData.name + "</td>");
 
     newTr.append(
-      "<td><a href='/results?user_id=" +
-        userData.id +
-        "'>Go to Team-Results</a></td>"
-    );
-    newTr.append(
-      "<td><a href='/teams?user_id=" + userData.id + "'>Create a Team</a></td>"
+      "<td><a href='/teams?user_id=" + userData.id + "'>Create/View/Delete</a></td>"
     );
     newTr.append(
       "<td><a style='cursor:pointer;color:red' class='delete-user'>Delete User</a></td>"
