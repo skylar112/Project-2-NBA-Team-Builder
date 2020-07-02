@@ -42,7 +42,7 @@ $(document).ready(function () {
     newTr.append("<td>" + userData.name + "</td>");
 
     newTr.append(`  <td>  <input placeholder="Update a Name" type="text" />
-    <button type="submit"  id="user-name2" class="btn btn-success"> update your user-name</button> <td> `);
+    <button type="submit"  id="user-name2" class="btn btn-primary  btn-sm mb-1"> update</button> <td> `);
 
     newTr.append(
       "<td><a href='/teams?user_id=" +
