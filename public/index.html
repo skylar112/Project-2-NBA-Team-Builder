@@ -12,16 +12,22 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Norican&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
     <link rel='icon' href="favi.ico" type='image/x-icon' />
-  
+
 </head>
 
 <body>
-  <div>
+
+  <header>
     <div>
-      <img src="img/55583.jpg" alt="ball" width="100%" height="200">
+      <div>
+        <img src="img/nbpa_banner.webp" alt="ball" width="100%" height="200">
+      </div>
     </div>
-  </div>
+  </header>
+
+
   <nav class="navbar navbar-expand-lg">
     <img src="./img/nba-logo-transparent.png" class="d-inline-block align-top" id="logoNba" alt="NBA">
     <a class="navbar-brand">
@@ -35,76 +41,108 @@
       <div class="navbar-nav topnav">
         <a class="nav-item nav-link active" href="index.html">Home<span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="teams.html">Teams</a>
+
         <a class="nav-item nav-link" href="bio.html">About Us</a>
+
         <!-- <a class="nav-item nav-link" href="results.html">View Teams</a> -->
       </div>
     </div>
   </nav>
+
+
+
+
+
+  <div id="carouselExampleFade" class="carousel slide carousel-fade " data-ride="carousel">
+
+
+    <div class="carousel-item active">
+
+      <img src="img/international-players-graphic.jpeg" class="d-block  " alt="nba" height="450" width="100%">
+
+    </div>
+    <div class="carousel-item  ">
+
+      <img src="img/wc1710015.jpg" class="d-block " alt="nba" height="450" width="100%">
+
+    </div>
+    <div class="carousel-item  ">
+      <img src="img/thumb-1920-856243.jpg" class="d-block  " alt="nba" height="450" width="100%">
+    </div>
+
+  </div>
+
+
+
+
+
+
+
   <div class="container nba1">
-    <div class="row">
-      <div class="col-lg-9 nba2">
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="img/top100_feature.jpg" class="d-block w-100" alt="nba">
-            </div>
-            <div class="carousel-item">
-              <img src="img/international-players-graphic.jpeg" class="d-block w-100" alt="nba">
-            </div>
-            <div class="carousel-item">
-              <img src="img/wc1710015.jpg" class="d-block w-100" alt="nba">
-            </div>
-            <div class="carousel-item">
-              <img src="img/thumb-1920-856243.jpg" class="d-block w-100" alt="nba">
-            </div>
-          </div>
-        </div>
+    <div class="row justify-content-between">
+      <!-- <div class=col-sm-3> -->
+      <div class="card ">
+        <iframe width="200" height="200" src="videos/All-Star Sunday Ultimate Highlight _ NBA.com.webm"
+          class="card-img-top" alt="video"></iframe>
+        <!-- </div> -->
       </div>
-      <div class=col-md-3>
-        <div class="card">
-          <iframe src="videos/All-Star Sunday Ultimate Highlight _ NBA.com.webm" class="card-img-top"
-            alt="video"></iframe>
-        </div>
-        <div class="card">
-          <iframe src="videos/nba.mp4" class="card-img-top" alt="video"></iframe>
-        </div>
-        <div class="card">
-          <iframe src="videos/My Video.mp4" class="card-img-top" alt="video"></iframe>
-        </div>
+      <!-- <div class=col-sm-3> -->
+      <div class="card">
+        <iframe width="200" height="200" src="videos/nba.mp4" class="card-img-top" alt="video"></iframe>
+        <!-- </div> -->
+      </div>
+      <!-- <div class=col-sm-3> -->
+      <div class="card">
+        <iframe width="200" height="200" src="videos/My Video.mp4" class="card-img-top" alt="video"></iframe>
+        <!-- </div> -->
       </div>
     </div>
-  </div>
-  <div class="row" id="userName">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="user-container">
-        <h2>Users</h2>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <!-- <th># of Users</th> -->
-              <th>Create Team</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr id="form-row">
-              <form id="user-form">
-                <td colspan="4">
-                  <input placeholder="Enter a name" id="user-name" type="text" />
-                  <button type="submit" class="btn btn-success">add your user-name</button>
-                </td>
-              </form>
-            </tr>
-          </tbody>
-        </table>
+
+
+
+
+
+    <div class="row" id="userName">
+      <div class="col-sm-12 col-md-offset-2">
+        <div class="user-container">
+          <h2>Users</h2>
+
+
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <!-- <th># of Users</th> -->
+                <th>Create Team</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="form-row">
+                <form id="user-form">
+                  <td colspan="4">
+                    <input placeholder="Enter a name" id="user-name" type="text" />
+                    <button type="submit" class="btn btn-success">add your user-name</button>
+                  </td>
+                </form>
+              </tr>
+            </tbody>
+          </table>
+
+
+        </div>
       </div>
     </div>
   </div>
 
+<<<<<<< HEAD
 
   
+=======
+>>>>>>> ca15ad8a83d1e9f5370517ac6bbd3a4af9aff7cb
   <script type="text/javascript" src="./js/user.js"></script>
+  <script src="https://vjs.zencdn.net/7.8.3/video.js"></script>
 </body>
 
 
