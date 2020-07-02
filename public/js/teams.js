@@ -48,8 +48,10 @@ $(document).ready(function () {
               "<p class= text-center>" + "Player is Unavailable" + "</p>"
             );
             $("#exampleModal2").modal("show");
-
+            gsap.to("#exampleModal2", {duration: 1, x: 200, ease: "bounce"});
+            
             return;
+
           }
 
           $(".modal-body").empty();
@@ -90,8 +92,10 @@ $(document).ready(function () {
               "<p>" 
            
           );
-
           $("#exampleModal").modal("show");
+          gsap.to("#exampleModal", {duration: 1, rotation: 360, scale: 0.8,});
+
+          
         });
       });
     });
