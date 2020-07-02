@@ -13,6 +13,12 @@ nav .brand-logo {
   color: #444;
 }
 
+.card{
+max-height: 350px;
+max-width: 250px;
+}
+
+
 p {
   line-height: 2rem;
 }
@@ -31,10 +37,15 @@ p {
     width: 100%;
   }
 
-.card-title{
-  color: blue;
+/*.card1 {
+  padding-left:
+  padding-bottom:;
 }
 
+.card-image1{
+  padding-left: 20%;
+}*/
+  
 .grid-example {
   border: 1px solid #eee;
   margin: 7px 0;
