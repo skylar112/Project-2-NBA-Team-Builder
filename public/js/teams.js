@@ -142,11 +142,7 @@ $(document).ready(function () {
     newTr.append(
       `<td class="show-stats-modal"> <a href="#">Show Stats</a> </td>`
     );
-    newTr.append(
-      "<td><a href='/teams?player_id=" +
-        playerData.id +
-        "'>Create a team</a></td>"
-    );
+
     newTr.append(
       "<td><a style='cursor:pointer;color:red' class='delete-player'>Delete Player</a></td>"
     );
