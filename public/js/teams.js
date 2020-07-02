@@ -13,13 +13,13 @@ $(document).ready(function () {
   $(document).on("click", ".show-stats-modal", handleStatsModalPress);
   $("#stats-dis").empty();
   // Getting the initial list of Authors
-  getPlayers();
 
-  function verifyPlayer() { }
+  getPlayers();
 
   function handleStatsModalPress(event) {
     playerInput = $(this).siblings(".playerName").text();
     console.log("player input", playerInput);
+
     $.ajax({
       url: `https://www.balldontlie.io/api/v1/players/?search=${playerInput}`,
       method: "GET",
@@ -40,58 +40,55 @@ $(document).ready(function () {
           method: "GET",
         }).then(function (response) {
           console.log("average", response);
+
+         
           if (!response.data[0]) {
-            
             $("#exampleModalLabel2").text(playerInput);
-            $(".modal-body2").html("<p class= text-center>" + "Player is Unavailable" + "</p>");
+            $(".modal-body2").html(
+              "<p class= text-center>" + "Player is Unavailable" + "</p>"
+            );
             $("#exampleModal2").modal("show");
-            
-           
+
             return;
           }
-          
-         
 
           $(".modal-body").empty();
           $("#exampleModalLabel").text(playerInput + " Stats");
 
           $(".modal-body").append(
             "<p>" +
-            "Games Played: " +
-            response.data[0].games_played +
-            "<p>" +
-            "<p>" +
-            "Points Per Game: " +
-            response.data[0].pts +
-            "<p>" +
-            "<p>" +
-            "Rebounds Per Game: " +
-            response.data[0].reb +
-            "<p>" +
-            "<p>" +
-            "Assist Per Game: " +
-            response.data[0].ast +
-            "<p>" +
-            "<p>" +
-            "Turnovers Per Game: " +
-            response.data[0].turnover +
-            "<p>" +
-            "<p>" +
-            "Steals Per Game: " +
-            response.data[0].stl +
-            "<p>" +
-            "<p>" +
-            "Mins Per Game: " +
-            response.data[0].min +
-            "<p>" +
-            "<p>" +
-            "Block Per Game: " +
-            response.data[0].blk +
-            "<p>" +
-            "<p>" +
-            "Block Per Game: " +
-            response.data[0].reb +
-            "<p>"
+              "Games Played: " +
+              response.data[0].games_played +
+              "<p>" +
+              "<p>" +
+              "Points Per Game: " +
+              response.data[0].pts +
+              "<p>" +
+              "<p>" +
+              "Rebounds Per Game: " +
+              response.data[0].reb +
+              "<p>" +
+              "<p>" +
+              "Assist Per Game: " +
+              response.data[0].ast +
+              "<p>" +
+              "<p>" +
+              "Turnovers Per Game: " +
+              response.data[0].turnover +
+              "<p>" +
+              "<p>" +
+              "Steals Per Game: " +
+              response.data[0].stl +
+              "<p>" +
+              "<p>" +
+              "Mins Per Game: " +
+              response.data[0].min +
+              "<p>" +
+              "<p>" +
+              "Block Per Game: " +
+              response.data[0].blk +
+              "<p>" 
+           
           );
 
           $("#exampleModal").modal("show");
@@ -142,14 +139,9 @@ $(document).ready(function () {
       `<td class="show-stats-modal"> <a href="#">Show Stats</a> </td>`
     );
     newTr.append(
-      "<td><a href='/results?player_id=" +
-      playerData.id +
-      "'>Go to Teams</a></td>"
-    );
-    newTr.append(
       "<td><a href='/teams?player_id=" +
-      playerData.id +
-      "'>Create a team</a></td>"
+        playerData.id +
+        "'>Create a team</a></td>"
     );
     newTr.append(
       "<td><a style='cursor:pointer;color:red' class='delete-player'>Delete Player</a></td>"

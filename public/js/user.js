@@ -1,19 +1,16 @@
-
-
 $(document).ready(function () {
- 
-
   // Getting references to the name input and user container, as well as the table body
   var nameInput = $("#user-name");
   var userList = $("tbody");
   var userContainer = $(".user-container");
- 
 
   // Adding event listeners to the form to create a new object, and the button to delete
- 
+
   $(document).on("submit", "#user-form", handleUserFormSubmit);
 
   $(document).on("click", ".delete-user", handleDeleteButtonPress);
+
+  $(document).on("click", "#user-name2", handleUpdateButtonPress);
 
   // Getting the initial list user
   getUsers();
@@ -44,13 +41,13 @@ $(document).ready(function () {
     newTr.data("user", userData);
     newTr.append("<td>" + userData.name + "</td>");
 
+    newTr.append(`  <td>  <input placeholder="Update a Name" type="text" />
+    <button type="submit"  id="user-name2" class="btn btn-success"> update your user-name</button> <td> `);
+
     newTr.append(
-      "<td><a href='/results?user_id=" +
+      "<td><a href='/teams?user_id=" +
         userData.id +
-        "'>Go to Team-Results</a></td>"
-    );
-    newTr.append(
-      "<td><a href='/teams?user_id=" + userData.id + "'>Create a Team</a></td>"
+        "'>Create/View/Delete</a></td>"
     );
     newTr.append(
       "<td><a style='cursor:pointer;color:red' class='delete-user'>Delete User</a></td>"
@@ -88,6 +85,23 @@ $(document).ready(function () {
     alertDiv.addClass("alert alert-danger");
     alertDiv.text("You must create an User before you can create a Team.");
     userContainer.append(alertDiv);
+  }
+
+  // Function for handling what happens when the update button is pressed
+  function handleUpdateButtonPress() {
+    var listItemData2 = $(this).parent("td").parent("tr").data("user");
+    console.log(listItemData2);
+    var sibling1 = $(this).siblings().val().trim();
+    console.log(sibling1);
+
+    var id = listItemData2.id;
+    $.ajax({
+      data: {
+        name: sibling1,
+      },
+      method: "PUT",
+      url: "/api/user/" + id,
+    }).then(getUsers);
   }
 
   // Function for handling what happens when the delete button is pressed
