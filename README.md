@@ -4,6 +4,11 @@ NBA Team Builder is an application that allows you to create and update your fan
 
 ![Logo](/public/img/international-players-graphic.jpeg)
 
+## Motivation
+
+Our motivation for building this project is based on fantasy team building where participants assemble imaginary or virtual teams of real players of a professional sport. These teams compete based on the statistical performance of those players' in actual games.
+
+
 ## Installation
 
 Install sequelize
