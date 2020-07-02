@@ -2,7 +2,7 @@
 
 # NBA Team Builder 
 
-NBA Team Builder is an application that allows you to create and update your fantasy team, as well as show and compare statistics between you friends. 
+NBA Team Builder is an application that allows you to create and update your fantasy team, as well as show and compare statistics between your friends. 
 
 ![Logo](/public/img/international-players-graphic.jpeg)
 
@@ -37,10 +37,22 @@ npm install nba-api-client
 
 
 
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+
+## Authors
+
+* **Rafael Quadros** 
+* **Chu Lin** 
+* **Christian Mora** 
+* **William Gomez Jr** 
+* **Kyle Cooper** 
+
+(https://github.com/skylar112/Project-2-NBA-Team-Builder)
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
