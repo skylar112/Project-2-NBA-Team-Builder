@@ -5,9 +5,26 @@
  *
  * Made By MaterializeCSS.com
  */
-body{
-background-color: rgb(229, 226, 226);
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+background-image: url("../img/0X48MP.jpg");
+background-repeat: no-repeat;
+background-size: cover;
 }
+
+#logo-container{
+  font-family: 'Norican', cursive;
+  color: black;
+}
+
+
+
+
 nav ul a,
 nav .brand-logo {
   color: #444;
