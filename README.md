@@ -1,6 +1,4 @@
-# Project-2-NBA-Team-Builder
-
-# NBA Team Builder 
+# Project-2 NBA-Team-Builder
 
 NBA Team Builder is an application that allows you to create and update your fantasy team, as well as show and compare statistics between your friends. 
 
@@ -50,7 +48,22 @@ Please make sure to update tests as appropriate.
 
 (https://github.com/skylar112/Project-2-NBA-Team-Builder)
 
+## Deployment
+
 (https://lower-canoe-73465.herokuapp.com/)
+
+## Built With
+
+* [Greensock](https://greensock.com/) - Professional-grade JavaScript animation for the modern web
+* [Sequelize](https://sequelize.org/) - Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server. It features solid transaction support, relations, eager and lazy loading, read replication and more.
+* [Express](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js
+* [MySQL2](https://www.npmjs.com/package/mysql2) - 
+MySQL client for Node.js with focus on performance. Supports prepared statements, non-utf8 encodings, binary log protocol, compression, ssl, much more
+* [node.js](https://nodejs.org/en/) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+* [nba-api-client](https://www.npmjs.com/package/nba-api-client) - A client for almost all stats.nba.com API endpoints, written in Node.js.
+* [balldontlie](https://www.balldontlie.io#introduction) - Free API to access NBA related data
+
+
 
 
 ## License
