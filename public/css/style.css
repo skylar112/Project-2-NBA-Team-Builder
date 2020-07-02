@@ -8,15 +8,11 @@ html,body {
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
+  background-image: url("../img/0X48MP.jpg");
+  background-repeat: no-repeat;
+background-size: cover;
 }
 
-body {
-background-image: url("../img/0X48MP.jpg");
-margin: 0;
-background-repeat: no-repeat;
-background-size: cover;
-height: 100%;
-}
 
 nav{
 background: rgb(182,181,204);
