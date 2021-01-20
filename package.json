@@ -20,7 +20,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.17.1",
-    "gsap": "^3.3.4",
+    "gsap": "^3.6.0",
     "mysql2": "^2.1.0",
     "sequelize": "^5.22.3"
   }
